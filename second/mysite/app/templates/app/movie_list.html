@@ -1,0 +1,29 @@
+<form action="" method="get">
+    <input type="search" name="movie_name" >
+    <button type="submit" >Search</button>
+</form>
+
+
+
+
+
+
+{% for movie_item in page_obj %}
+    {{movie_item.name}}
+
+</br>
+{% endfor %}
+
+{% if page_obj.has_previous %}
+    <a href="?page=1">First</a>
+    <a href="?page={{page_obj.pevious_page_number}}">Previous</a>
+{% endif %}
+
+Page:{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+
+{% if page_obj.has_next%}
+    
+    <a href="?page={{page_obj.next_page_number }}">Next</a>
+    <a href="?page={{page_obj.paginator.num_pages}}">Last</a>
+{% endif %}
